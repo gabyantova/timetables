@@ -14,6 +14,18 @@
 
 <div class="container">
 
+{{dict_monday}}
+
+{% for key,value in dict_monday.items %}
+	<p> {{key }}</p>
+	<p>{{key}}</p>
+        {% for v in values %}
+        <p>{{v}}</p>
+        {% endfor %}
+	<p>{{ value }}</p>
+	{% endfor %}
+
+
 
   <h2>Hover Rows</h2>
   <p>The .table-hover class enables a hover state on table rows:</p>            
@@ -29,15 +41,20 @@
     <tbody>
       <tr>
         <td>Monday</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-	<td>k</td>
-	<td>j</td>
-	<td></td>
-	<td></td>
-	<td></td>
-	<td></td>
-	<td></td>
+
+	{% for key,value in dict_monday %}
+		<td>
+		{{ key }}
+		</td>
+	<td>{{key}}</td>
+        {% for v in values %}
+        <td>{{v}}</td>
+        {% endfor %}
+		<td>
+		{{ value }}
+		</td>
+	{% endfor %}
+
       </tr>
       <tr>
         <td>Tuesday</td>

@@ -8,7 +8,7 @@ import datetime
 
 #r = urllib.urlopen(get_url()).read()
 
-
+#contents[1].find_all("td").find_all("p")
 
 
 
@@ -35,7 +35,6 @@ times = soup.table.thead.tr.find_all("th")
         times_list.append(start_time + " - " + end_time)
 '''
 
-#def get_times():
 times = soup.table.thead.tr.find_all("th")
 times = times[1:]
 times_list = []
@@ -45,12 +44,45 @@ for time in times:
     times_list.append(start_time + " - " + end_time)
 
 
+contents = soup.table.tbody.find_all("tr")
 
-#times_list = times_list
+dict1 = {}
+
+#remove day of week tag
+for content in contents:
+    row_items = content.find_all("td")
+    first = True
+    day_of_the_week = ""
+    counter = 0
+    for row_item in row_items:
+        if first:
+            dict1[row_item.text] = []
+            day_of_the_week = row_item.text
+            first = False
+        else:
+            courses_that_hour = row_item.find_all("strong")
+            type(courses_that_hour)
+            acronymns_of_courses_that_hour = []
+            print counter
+            for course_that_hour in courses_that_hour:
+                course_acr = course_that_hour.text
+                acronymns_of_courses_that_hour.append(course_acr)
+            dict1[day_of_the_week].append(acronymns_of_courses_that_hour)
+        print counter
+        counter = counter+1
+
+print dict1
+
+
+dict_mon = dict1["Mon"][0]
+
+
+
+
 
 def post_list(request):
     #list = ['a', 'b', 'c']
     return render(request,
     'timetable/index.html',
-    {'times':times_list}
-    )
+    {'times':times_list},
+    {'dict_monday':dict1})
