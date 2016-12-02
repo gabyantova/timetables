@@ -47,34 +47,35 @@ for time in times:
 contents = soup.table.tbody.find_all("tr")
 
 dict1 = {}
+list_of_days = []
+list_of_schedule = []
 
-#remove day of week tag
+
 for content in contents:
     row_items = content.find_all("td")
     first = True
     day_of_the_week = ""
     counter = 0
+    #day = []
     for row_item in row_items:
         if first:
             dict1[row_item.text] = []
             day_of_the_week = row_item.text
+            #list_of_days.append(day_of_the_week)
             first = False
-        else:
+        else: 
             courses_that_hour = row_item.find_all("strong")
-            type(courses_that_hour)
             acronymns_of_courses_that_hour = []
-            print counter
             for course_that_hour in courses_that_hour:
                 course_acr = course_that_hour.text
                 acronymns_of_courses_that_hour.append(course_acr)
+            #day.append(acronymns_of_courses_that_hour)
             dict1[day_of_the_week].append(acronymns_of_courses_that_hour)
         print counter
         counter = counter+1
+    #list_of_schedule.append(day)
 
-print dict1
-
-
-dict_mon = dict1["Mon"][0]
+#list_of_schedule = list_of_schedule[0]
 
 
 
@@ -82,7 +83,5 @@ dict_mon = dict1["Mon"][0]
 
 def post_list(request):
     #list = ['a', 'b', 'c']
-    return render(request,
-    'timetable/index.html',
-    {'times':times_list},
-    {'dict_monday':dict1})
+    vars = { 'times': times_list, 'days': dict1}
+    return render(request,'timetable/index.html',vars)

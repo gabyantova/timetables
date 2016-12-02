@@ -14,19 +14,6 @@
 
 <div class="container">
 
-{{dict_monday}}
-
-{% for key,value in dict_monday.items %}
-	<p> {{key }}</p>
-	<p>{{key}}</p>
-        {% for v in values %}
-        <p>{{v}}</p>
-        {% endfor %}
-	<p>{{ value }}</p>
-	{% endfor %}
-
-
-
   <h2>Hover Rows</h2>
   <p>The .table-hover class enables a hover state on table rows:</p>            
   <table class="table table-hover">
@@ -41,20 +28,21 @@
     <tbody>
       <tr>
         <td>Monday</td>
+		
+		{% for key,value in days.items %}
+		{% if key|stringformat:"s" == 'Mon' %}
+		{% for item in value %}
+		<th>
+			{% for subject in item %}
+			<p>{{ subject }} </p>
+			{% endfor %}
+		 </th>
+ 		
 
-	{% for key,value in dict_monday %}
-		<td>
-		{{ key }}
-		</td>
-	<td>{{key}}</td>
-        {% for v in values %}
-        <td>{{v}}</td>
-        {% endfor %}
-		<td>
-		{{ value }}
-		</td>
-	{% endfor %}
 
+		{% endfor %}
+		{% endif %}
+		{% endfor %}
       </tr>
       <tr>
         <td>Tuesday</td>
