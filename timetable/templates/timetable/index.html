@@ -46,23 +46,71 @@
       </tr>
       <tr>
         <td>Tuesday</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
+		{% for key,value in days.items %}
+		{% if key|stringformat:"s" == 'Tue' %}
+		{% for item in value %}
+		<th>
+			{% for subject in item %}
+			<p>{{ subject }} </p>
+			{% endfor %}
+		 </th>
+ 		
+
+
+		{% endfor %}
+		{% endif %}
+		{% endfor %}
       </tr>
       <tr>
         <td>Wednesday</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
+		{% for key,value in days.items %}
+		{% if key|stringformat:"s" == 'Wed' %}
+		{% for item in value %}
+		<th>
+			{% for subject in item %}
+			<p>{{ subject }} </p>
+			{% endfor %}
+		 </th>
+ 		
+
+
+		{% endfor %}
+		{% endif %}
+		{% endfor %}
       </tr>
       <tr>
         <td>Thursday</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
+		{% for key,value in days.items %}
+		{% if key|stringformat:"s" == 'Thu' %}
+		{% for item in value %}
+		<th>
+			{% for subject in item %}
+			<p>{{ subject }} </p>
+			{% endfor %}
+		 </th>
+ 		
+
+
+		{% endfor %}
+		{% endif %}
+		{% endfor %}
       </tr>
       <tr>
         <td>Friday</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
+		{% for key,value in days.items %}
+		{% if key|stringformat:"s" == 'Fri' %}
+		{% for item in value %}
+		<th>
+			{% for subject in item %}
+			<p>{{ subject }} </p>
+			{% endfor %}
+		 </th>
+ 		
+
+
+		{% endfor %}
+		{% endif %}
+		{% endfor %}
       </tr>
     </tbody>
   </table>

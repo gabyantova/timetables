@@ -71,8 +71,6 @@ for content in contents:
                 acronymns_of_courses_that_hour.append(course_acr)
             #day.append(acronymns_of_courses_that_hour)
             dict1[day_of_the_week].append(acronymns_of_courses_that_hour)
-        print counter
-        counter = counter+1
     #list_of_schedule.append(day)
 
 #list_of_schedule = list_of_schedule[0]
