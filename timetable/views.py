@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from bs4 import BeautifulSoup
-import urllib
+import urllib.request
 import datetime
 
 # Create your views here.
@@ -22,6 +22,7 @@ def get_url():
 
 
 soup = BeautifulSoup(urllib.urlopen(get_url()).read())
+	
 times = soup.table.thead.tr.find_all("th")
 
 
