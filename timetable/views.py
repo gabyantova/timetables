@@ -21,7 +21,7 @@ def get_url():
     return "http://web.inf.ed.ac.uk/infweb/student-services/ito/admin/timetables/lecture-timetable-20" + str(ac_year_start) + "-" + str(ac_year_start + 1)
 
 
-soup = BeautifulSoup(urllib.urlopen(get_url()).read())
+soup = BeautifulSoup(urllib.request.urlopen(get_url()).read())
 	
 times = soup.table.thead.tr.find_all("th")
 
